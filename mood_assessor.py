@@ -5,7 +5,7 @@ def get_today_date():
     return str(datetime.date.today())
 
 def mood_to_int(mood):
-    """Converts mood string to an integer representation."""
+   
     mood_mapping = {
         'happy': 2,
         'relaxed': 1,
@@ -16,7 +16,7 @@ def mood_to_int(mood):
     return mood_mapping[mood]
 
 def get_mood_from_user():
-    """Prompts the user for their mood and validates it."""
+    
     valid_moods = ['happy', 'relaxed', 'apathetic', 'sad', 'angry']
     while True:
         mood = input("Please enter your mood today (happy, relaxed, apathetic, sad, angry): ").lower()
@@ -25,7 +25,7 @@ def get_mood_from_user():
         print("Invalid mood, please try again.")
 
 def store_mood(mood):
-    """Stores the mood in a file, with a new line for each day."""
+    
     dir_path = 'data'
     os.makedirs(dir_path, exist_ok=True)
     file_path = os.path.join(dir_path, 'mood_diary.txt')
@@ -33,7 +33,7 @@ def store_mood(mood):
         file.write(f"{get_today_date()} {mood_to_int(mood)}\n")
 
 def already_entered_today():
-    """Checks if today's mood has already been entered."""
+    
     file_path = 'data/mood_diary.txt'
     try:
         with open(file_path, 'r') as file:
@@ -45,7 +45,7 @@ def already_entered_today():
     return False
 
 def diagnose_mood():
-    """Diagnoses the user's mood based on the last 7 entries."""
+    
     file_path = 'data/mood_diary.txt'
     try:
         with open(file_path, 'r') as file:
@@ -70,7 +70,7 @@ def diagnose_mood():
         print("No mood data available yet.")
 
 def assess_mood():
-    """Main function to assess and store the user's mood, then diagnose."""
+    
     if already_entered_today():
         print("Sorry, you have already entered your mood today.")
     else:
